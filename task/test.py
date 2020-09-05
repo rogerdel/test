@@ -97,7 +97,7 @@ def answering(n):
                     if(r == text):
                         btn.click()
         br.find_element_by_id('boton').click()
-        time.sleep(rn.randrange(7))
+        time.sleep(rn.randrange(2,4))
         br.find_element_by_id('boton').click()
 
 if (__name__ == "__main__"):
