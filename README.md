@@ -16,4 +16,4 @@
 **Comentarios adicionales:**
 
 - El llenado del cuestionario tardara alrededor de unos 3 minutos para que sea un tiempo realista al humano.
-- La versión actual funciona con la versión 85.x de Google Chrome.
+- La versión actual funciona con la versión 87.x de Google Chrome.
