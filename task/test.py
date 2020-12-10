@@ -84,6 +84,7 @@ def findout(n,ch):
                     adicionar(question,answ[l])
             if(correct != "C o r r e c t o" ):
                  print(question)
+                 time.sleep(5)
             br.find_element_by_id('boton').click()
         br.get("https://www.google.com/")
         br.get(url)
@@ -105,9 +106,8 @@ def answering():
                     if(r == text):
                         btn.click()
         br.find_element_by_id('boton').click()
-        #time.sleep(rn.randrange(2,4))
+        time.sleep(rn.randrange(2,4))
         br.find_element_by_id('boton').click()
 
 if (__name__ == "__main__"):
-    #answering()
-    findout(10,2)
+    answering()
