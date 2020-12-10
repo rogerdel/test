@@ -33,25 +33,28 @@ def delete(qs):
     connection.close()
 br = webdriver.Chrome()
 
-url = "https://www.daypo.com/pretest-inf272.html#test"
+url = "https://www.daypo.com/repaso-inf272.html#test"
 br.get(url)
 
-def findout(n,ch):
+def findout(npreguntas,n,ch):
     for a in range(n):
         print("--------------------------------------")
         time.sleep(1)
-        for i in range(58):
+        for i in range(npreguntas):
             question = br.find_element_by_id('pri1').text
             table = br.find_element_by_id('cuestiones1').find_element_by_class_name("w")
             rows = table.find_elements(By.TAG_NAME, "tr")
             ln = len(rows)
             k = ch
-            #if("3" in question):
-            #    k = 3
-            #if("2" in question):
-             #   k = 2
-            option = rn.sample(range(ln), k)
+            if("seleccione 3" in question):
+                k = 3
+            if("seleccione 2" in question):
+                k = 2
             c = getanswer(question)
+            if(len(c) != 0):
+                k = len(c)
+            option = rn.sample(range(ln), k)
+           
             answ = []
             nrop = 0
             for row in rows:
@@ -76,7 +79,6 @@ def findout(n,ch):
                     adicionar(question,answ[l])
             if(correct != "C o r r e c t o" ):
                  print(question)
-                 #time.sleep(6)
             br.find_element_by_id('boton').click()
         br.get("https://www.google.com/")
         br.get(url)
@@ -101,4 +103,4 @@ def answering(n):
         br.find_element_by_id('boton').click()
 
 if (__name__ == "__main__"):
-    answering(58)
+   answering(51)
