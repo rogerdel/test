@@ -35,10 +35,15 @@ br = webdriver.Chrome()
 
 url = "https://www.daypo.com/repaso-inf272.html#test"
 br.get(url)
+def getnumpreguntas():
+    time.sleep(1)
+    cant = br.find_element_by_id("datos").find_element_by_class_name("ma").find_elements(By.TAG_NAME, "td")
+    return int((cant[1].text).split("/")[1])
 
-def findout(npreguntas,n,ch):
+def findout(n,ch):
+    time.sleep(1)
+    npreguntas = getnumpreguntas()
     for a in range(n):
-        print("--------------------------------------")
         time.sleep(1)
         for i in range(npreguntas):
             question = br.find_element_by_id('pri1').text
@@ -82,8 +87,9 @@ def findout(npreguntas,n,ch):
             br.find_element_by_id('boton').click()
         br.get("https://www.google.com/")
         br.get(url)
-def answering(n):
-    time.sleep(2)
+def answering():
+    time.sleep(1)
+    n = getnumpreguntas()
     for i in range(n):
         question = br.find_element_by_id('pri1').text
         table = br.find_element_by_id('cuestiones1').find_element_by_class_name("w")
@@ -99,8 +105,9 @@ def answering(n):
                     if(r == text):
                         btn.click()
         br.find_element_by_id('boton').click()
-        time.sleep(rn.randrange(2,4))
+        #time.sleep(rn.randrange(2,4))
         br.find_element_by_id('boton').click()
 
 if (__name__ == "__main__"):
-   answering(51)
+    #answering()
+    findout(10,2)
